@@ -1,9 +1,10 @@
 #!/bin/bash
 username="sammy"
 password="qwertyui"
+ip_template="localhost"
 
 apt update
-apt upgrade -y
+#apt upgrade -y
 
 apt install vim -y
 
@@ -18,12 +19,10 @@ chown nobody:nogroup /home/$username/ftp
 chmod a-w /home/$username/ftp
 
 mkdir /home/$username/ftp/files
-chown $username:$username /home/alex/ftp/files
+chown $username:$username /home/$username/ftp/files
 rm /etc/vsftpd.conf
 cp /root/server/conf /etc
 service vsftpd restart
-
-
 
 #ssh config
 rm /etc/ssh/sshd_config
@@ -34,10 +33,20 @@ service ssh restart
 
 
 
+#LEMP
+apt update
+apt install nginx
+apt install mysql-server -y
+apt install php7.4-fpm php7.4-mysql -y
+apt install php7.4-mbstring -y
+apt install phpmyadmin -y
+mysql_secure_installation
 
 
 
-
+sed -i "s~ip_template_place~$ip_template~g" /root/server/nginx.conf
+rm /etc/nginx/nginx.conf
+cp /root/server/nginx.conf /etc/nginx/nginx.conf
 
 
 
