@@ -16,5 +16,4 @@ chmod +x /root/server/config.sh && /root/server/./config.sh
     <ol>Tab = Ok</ol>
     <ol>Configure db = yes</ol>
     <ol></ol>
-
     </ul>
