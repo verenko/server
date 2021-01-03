@@ -1,4 +1,5 @@
 git clone https://github.com/verenko/server.git
 
-chmod +x /root/server/config.sh && ./root/server/config.sh
-
+chmod +x /root/server/config.sh && /root/server/./config.sh
+<h2>Mysql</h2>
+    
