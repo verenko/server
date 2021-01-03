@@ -1,6 +1,6 @@
 #!/bin/bash
 username="sammy"
-password="test"
+password="qwertyui"
 
 apt update
 apt upgrade -y
@@ -14,7 +14,11 @@ pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
 useradd -m -p "$pass" "$username"
 
 mkdir /home/$username/ftp
-chown nobody:nogroup /home/$username/ftp
+chown $username:$username /home/$username/ftp
+
+#ssh config
+rm /etc/ssh/sshd_config
+cp /root/server/
 
 #zsh install
 apt-get install zsh -y
