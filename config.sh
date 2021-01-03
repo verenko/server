@@ -34,13 +34,14 @@ service ssh restart
 
 
 #LEMP
-apt update
-apt install nginx
+apt update 
+apt install nginx -y
 apt install mysql-server -y
 apt install php7.4-fpm php7.4-mysql -y
 apt install php7.4-mbstring -y
-apt install phpmyadmin -y
 mysql_secure_installation
+apt install phpmyadmin -y
+
 
 
 
@@ -56,7 +57,7 @@ apt-get install git-core -y
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
 
-cp -r .oh-my-zsh /home/$username
+cp -r /root/.oh-my-zsh /home/$username
 cp /root/server/.zshrc /home/$username
 
 chown $username:$username /home/$username/.zshrc
