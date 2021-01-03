@@ -32,7 +32,6 @@ service ssh restart
 
 
 
-
 #LEMP
 apt update 
 apt install nginx -y
@@ -41,7 +40,7 @@ apt install php7.4-fpm php7.4-mysql -y
 apt install php7.4-mbstring -y
 mysql_secure_installation
 apt install phpmyadmin -y
-
+service nginx reload
 
 
 
