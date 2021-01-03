@@ -2,6 +2,8 @@
 username="sammy"
 password="qwertyui"
 ip_template="localhost"
+user_db="relative"
+password_db="qwertyui"
 
 apt update
 #apt upgrade -y
@@ -32,7 +34,7 @@ service ssh restart
 
 
 
-#LEMP
+#LEMP MYSQL
 apt update 
 apt install nginx -y
 apt install mysql-server -y
@@ -42,6 +44,9 @@ mysql_secure_installation
 apt install phpmyadmin -y
 service nginx reload
 
+mysql -e "CREATE USER '$user_db'@'localhost' IDENTIFIED BY '$password_db';"
+mysql -e "GRANT ALL PRIVILEGES ON * . * TO '$user_db'@'localhost';"
+mysql -e "FLUSH PRIVILEGES;"
 
 
 sed -i "s~ip_template_place~$ip_template~g" /root/server/nginx.conf
