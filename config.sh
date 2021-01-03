@@ -40,9 +40,10 @@ apt install nginx -y
 apt install mysql-server -y
 apt install php7.4-fpm php7.4-mysql -y
 apt install php7.4-mbstring -y
-mysql_secure_installation
+
 apt install phpmyadmin -y
-service nginx reload
+mysql_secure_installation
+
 
 mysql -e "CREATE USER '$user_db'@'localhost' IDENTIFIED BY '$password_db';"
 mysql -e "GRANT ALL PRIVILEGES ON * . * TO '$user_db'@'localhost';"
@@ -52,7 +53,7 @@ mysql -e "FLUSH PRIVILEGES;"
 sed -i "s~ip_template_place~$ip_template~g" /root/server/nginx.conf
 rm /etc/nginx/nginx.conf
 cp /root/server/nginx.conf /etc/nginx/nginx.conf
-
+service nginx reload
 
 
 #zsh install
